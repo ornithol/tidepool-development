@@ -1,0 +1,53 @@
+{
+  "name": "Tidepool Development",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+  "privileged": true,
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+              "version": "latest",
+              "moby": true
+            }
+  },
+  "forwardPorts": [
+    31500,
+    32000,
+    32500,
+    10350
+  ],
+  "portsAttributes": {
+    "31500": {
+      "label": "Tidepool Blip Web UI",
+      "onAutoForward": "notify"
+    },
+    "32000": {
+      "label": "Keycloak Admin Console",
+      "onAutoForward": "notify"
+    },
+    "32500": {
+      "label": "HTTPS Proxy",
+      "onAutoForward": "silent"
+    },
+    "10350": {
+      "label": "Tilt Dashboard",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "go.gopath": "/home/vscode/go"
+      },
+      "extensions": [
+        "golang.go",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker",
+        "ms-kubernetes-tools.vscode-kubernetes-tools"
+      ]
+    }
+  },
+  "remoteUser": "vscode"
+}
