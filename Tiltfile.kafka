@@ -22,6 +22,7 @@ def provisionstrimzi():
   helm_remote('strimzi-kafka-operator',
 	repo_name='strimzi',
 	repo_url='https://strimzi.io/charts/',
+  version='0.28.0',
 	namespace='default',
 	set=['resources.limits.memory=1024Mi', 'resources.requests.memory=Mi']
   )
